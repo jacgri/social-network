@@ -1,0 +1,27 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacgri/social-network.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacgri/social-network/issues"
+  },
+  "homepage": "https://github.com/jacgri/social-network#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongoose": "^4.11.6",
+    "validator": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^20.0.4"
+  }
+}
