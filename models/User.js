@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
 var validator = require('validator')
 
 var UserSchema = new mongoose.Schema({
+
     emailAddress: {
         type:String,
         required:[true,'Email address is required.'],
@@ -14,6 +15,14 @@ var UserSchema = new mongoose.Schema({
         required:[true, 'Password is required.']
     }
 })
+
+
+    UserSchema.statics = {
+        login: function(user, callback){
+            return User.findOne(user,callback)
+        }
+    }
+
 
 var User = mongoose.model('User', UserSchema)
 

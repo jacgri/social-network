@@ -24,6 +24,19 @@ describe('Users', function(){
             expect(error.errors.emailAddress.message).toBe('Email address isn\'t valid.')
         })
 
+        test('login requests user with matching email address and password.', function(){
+            var spy = spyOn(User, 'findOne')
+            var user = {
+                emailAdress:'hello@world.com',
+                password:'password123'
+            }
+
+            var callback = jest.fn()
+            User.login(user, callback)
+            expect(spy).toHaveBeenCalledWith(user, callback)
+            
+        })
+
 
 
 })
