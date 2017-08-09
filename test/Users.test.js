@@ -114,6 +114,32 @@ describe('Users', function(){
             expect(spy).toHaveBeenCalledWith(req.body)
         })
 
+        test('can\`t login if not registered', function(done){
+            var user = {
+                emailAddress: 'hello@world.com',
+                password: 'password123'
+            }
+            User.login(user, function(error, result){
+                expect(error).not.toBeTruthy()
+                expect(result).not.toBeTruthy()
+                done()
+            })
+        })
+
+        test('can login if registered', function(done){
+            var user = {
+                emailAddress: 'hello@world.com',
+                password: 'password123'
+            }
+            User.register(user, function(error, result){
+                User.login(user, function(error,result){
+                    expect(error).not.toBeTruthy()
+                    expect(result).toBeTruthy()
+                    done()
+                })
+            })
+        })
+
 
 
 })
