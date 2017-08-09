@@ -1,6 +1,7 @@
 var User = require('../models/User')
 var usersControllers = require('../controllers/usersControllers.js')
 
+
 describe('Users', function(){
       
         test('email is required', function(){
@@ -38,8 +39,8 @@ describe('Users', function(){
             
         })
 
-        test('login static is called when we post to the login route'), function(){
-            var spy = spyOn(User.login())
+        test('login static is called when we post to the login route', function(){
+            var spy = spyOn(User, 'login')
             var req = { 
                 body: {
                     emailAddres: 'hello@world.com', 
@@ -47,10 +48,10 @@ describe('Users', function(){
                 }
             }
             var res = {}
-            userControllers.login(req,res)
+            usersControllers.login(req,res)
             expect(spy).toHaveBeenCalledWith(req.body)
 
-        }
+        })
 
 
 
