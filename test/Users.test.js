@@ -9,6 +9,14 @@ var usersControllers = require('../controllers/usersControllers.js')
 
 
 describe('Users', function(){
+
+    beforeEach(function (done) {
+        User.remove({}, function(){
+            done()
+        })
+    })
+
+
     beforeAll(function(){
         mongoose.connect(process.env.DATABASE_URL_TEST, {
             useMongoClient: true
@@ -84,6 +92,26 @@ describe('Users', function(){
             }
             User.register(user, callback)
 
+        })
+
+        test('register static is called when we post to the register route', function(){
+            var spy = spyOn(User, 'register')
+
+            var req = {
+                body: {
+                    emailAddress: 'hello@world.com', 
+                    password: 'password123',
+                    confirmPassord: 'password123'
+                } 
+            }
+
+            var res = {
+
+            }
+
+            usersControllers.register(req, res)
+
+            expect(spy).toHaveBeenCalledWith(req.body)
         })
 
 
