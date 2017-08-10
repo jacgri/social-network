@@ -15,7 +15,6 @@ var UserSchema = new mongoose.Schema({
     }
 })
 
-
     UserSchema.statics = {
         login: function(user, callback){
             return User.findOne(user,callback)

@@ -140,7 +140,23 @@ describe('Users', function(){
             })
         })
 
+        test('login static creates a session', function(){
+            var req = {
+                body: {
+                    emailAddress: 'hello@world.com', 
+                    password: 'password123'
+                },
+                user: {}
+            }
+            var res = {}
 
+            User.register(user, function(){
+                User.login(req, res, function(){
+                    expect(req.user.session).not.toBeUndefined()
+                    done()
+                })
+            })
+        })
 
 })
 

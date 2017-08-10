@@ -1,8 +1,13 @@
 var User = require('../models/User')
 
 var usersControllers = {
-    login: function(req, res){
-        User.login(req.body)
+    login: function(req, res, next){
+        User.login(req.body, function(error, result){
+            if(!error){
+                req.user.session = result
+                next()
+            }
+        })
     },
 
     register: function(req, res){
