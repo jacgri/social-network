@@ -143,5 +143,22 @@ describe('Users', function(){
             })
         })
 
+        test('logout clears the session', function () {
+            var req = {
+              session: {
+                user: {
+                  emailAddress: 'email@example.com',
+                  password: 'password123'
+                }
+              }
+            }
+            var res = {}
+            var next = jest.fn()
+          
+            usersControllers.logout(req, res, next)
+            expect(req.session.user).toBeFalsy()
+          })
+          
+
 })
 

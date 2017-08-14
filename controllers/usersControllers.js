@@ -12,7 +12,12 @@ var usersControllers = {
 
     register: function(req, res, next){
         User.register(req.body, next)
-    }
+    },
+
+    logout: function (req, res, next) {
+        req.session.user = false
+        next()
+      }
 
 }
 
