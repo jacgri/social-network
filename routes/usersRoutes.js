@@ -1,4 +1,5 @@
 var bodyParser = require('body-parser')
+var usersControllers= require('../controllers/usersControllers')
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -7,5 +8,15 @@ var usersRoutes = function(app){
         res.render('home', { currentUser: req.session.user })
         
     })
+
+    app.get('/register', function (req, res) {
+        res.render('register')
+        
+    })
+
+    app.post('/register', urlencodedParser, usersControllers.register, function (req, res) {
+        res.redirect('/')
+    })
+
 
 }
