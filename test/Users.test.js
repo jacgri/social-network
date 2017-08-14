@@ -91,13 +91,12 @@ describe('Users', function(){
                 } 
             }
 
-            var res = {
+            var res = {}
+            var callback = jest.fn()
 
-            }
+            usersControllers.register(req, res, callback)
 
-            usersControllers.register(req, res)
-
-            expect(spy).toHaveBeenCalledWith(req.body)
+            expect(spy).toHaveBeenCalledWith(req.body, callback)
         })
 
         test('can\`t login if not registered', function(done){
@@ -126,19 +125,19 @@ describe('Users', function(){
             })
         })
 
-        test('login static creates a session', function(){
+        test('login static creates a session', function(done){
             var req = {
                 body: {
                     emailAddress: 'hello@world.com', 
                     password: 'password123'
                 },
-                user: {}
+                session: {}
             }
             var res = {}
 
-            User.register(req.body, function(){
-                User.login(req, res, function(){
-                    expect(req.user.session).not.toBeUndefined()
+            User.register(req.body, function(error, result){
+                usersControllers.login(req, res, function(){
+                    expect(req.session.user).not.toBeUndefined()
                     done()
                 })
             })
