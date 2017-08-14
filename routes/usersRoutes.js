@@ -26,8 +26,10 @@ var usersRoutes = function(app){
         res.redirect('/')
     })
 
-    app.get('/login', usersControllers.logout, function(req,res){
-        req.redirect('/')
+    app.get('/logout', usersControllers.logout, function(req,res){
+        res.redirect('/')
     })
 
 }
+
+module.exports = usersRoutes

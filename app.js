@@ -1,4 +1,4 @@
-var usersRoutes = require('../routes/usersRoutes')
+var usersRoutes = require('./routes/usersRoutes.js')
 
 var path = require('path')
 
@@ -11,7 +11,6 @@ var mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, {
     useMongoClient: true
   })
-
 
 var express = require('express')
 var exphbs = require('express-handlebars')
@@ -27,10 +26,11 @@ app.engine('.hbs', exphbs({
     extname: '.hbs',
     defaultLayout: 'main'
 }))
+
 app.set('view engine', '.hbs')
 
 app.use(express.static('public'))
 
-userRoutes(app)
+usersRoutes(app)
 
 app.listen(3000)
