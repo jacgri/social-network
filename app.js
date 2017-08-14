@@ -1,3 +1,5 @@
+var usersRoutes = require('../routes/usersRoutes')
+
 var path = require('path')
 
 require('dotenv').config({
@@ -10,9 +12,16 @@ mongoose.connect(process.env.DATABASE_URL, {
     useMongoClient: true
   })
 
+
 var express = require('express')
 var exphbs = require('express-handlebars')
 var app = express()
+var sessions = require('client-sessions')
+
+app.use(sessions({
+    cookieName: 'session',
+    secret: 'gds668asgdg2j9797sgjh73289jbhgj2'
+  }))
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
@@ -21,5 +30,7 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs')
 
 app.use(express.static('public'))
+
+userRoutes(app)
 
 app.listen(3000)

@@ -1,0 +1,6 @@
+
+{{#if currentUser}}
+  Hello {{currentUser.emailAddress}}! <a href="/logout">Logout</a>.
+{{else}}
+  You must be logged in to view this page. <a href="/login">Login</a> or <a href="/register">Register</a>.
+{{/if}}
