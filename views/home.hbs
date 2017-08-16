@@ -1,6 +1,10 @@
 
 {{#if currentUser}}
-  Hello {{currentUser.emailAddress}}! <a href="/logout">Logout</a>.
+  Hello {{currentUser.emailAddress}}! <a href="/logout">Logout</a> or <a href="/editprofile">Edit Profile.
+
 {{else}}
-  You must be logged in to view this page. <a href="/login">Login</a> or <a href="/register">Register</a>.
+  <ul>
+  <li><a href="/login">Login</a></li>
+  <li><a href="/register">Register</a></li>
+  </ul>
 {{/if}}

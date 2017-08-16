@@ -116,8 +116,10 @@ describe('Users', function(){
                 emailAddress: 'hello@world.com',
                 password: 'password123'
             }
-            User.register(user, function(error, result){
-                User.login(user, function(error,result){
+            var userClone = Object.assign({}, user)
+
+            User.register(user, function(){
+                User.login(userClone, function(error,result){
                     expect(error).not.toBeTruthy()
                     expect(result).toBeTruthy()
                     done()
@@ -159,6 +161,20 @@ describe('Users', function(){
             expect(req.session.user).toBeFalsy()
           })
           
+
+          test('can edit profile', function () {
+            var user = {
+              emailAddress: 'email@example.com',
+              password: 'password123'
+            }
+          
+            User.register(user, function () {
+              User.editProfile(user, function (error, result) {
+                expect(error).toBeFalsy()
+                expect(result).toBeTruthy()
+              })
+            })
+          })          
 
 })
 

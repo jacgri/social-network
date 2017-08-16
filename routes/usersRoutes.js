@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser')
 var usersControllers= require('../controllers/usersControllers')
+var User = require('../models/User')
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -28,6 +29,20 @@ var usersRoutes = function(app){
 
     app.get('/logout', usersControllers.logout, function(req,res){
         res.redirect('/')
+    })
+
+    app.get('/editprofile', function (req, res) {
+        User.findOne({ _id: req.session.user._id }, function (error, result) {
+            if (error) {
+              res.send('An error occurred')
+            } else {
+              res.render('editprofile', { currentUser: result })
+            }
+          })
+    })
+      
+    app.post('/editprofile', urlencodedParser, usersControllers.editProfile, function (req, res) {
+        res.redirect('/editprofile')
     })
 
 }
