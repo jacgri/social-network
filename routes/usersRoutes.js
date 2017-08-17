@@ -45,6 +45,27 @@ var usersRoutes = function(app){
         res.redirect('/editprofile')
     })
 
+    app.get('/profiles', function (req, res) {
+        User.find({}, function (error, result) {
+          if (error) {
+            res.send('An error occurred')
+          } else {
+            res.render('profiles', { users: result })
+          }
+        })
+    })
+
+    app.get('/profiles/:userId', function (req, res) {
+        var userId = req.params.userId
+        User.findOne({ _id: userId }, function (error, result) {
+          if (error) {
+            res.send('An error occurred')
+          } else {
+            res.render('profile', { user: result })
+          }
+        })
+    })
+
 }
 
 module.exports = usersRoutes

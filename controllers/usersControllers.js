@@ -15,7 +15,7 @@ var usersControllers = {
     },
 
     logout: function (req, res, next) {
-        req.session.user = false
+        req.session.reset()
         next()
     },
 

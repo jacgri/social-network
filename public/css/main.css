@@ -56,3 +56,11 @@ button{
   padding:8px;
 }
 
+.profiles {
+  float: left;
+}
+
+.profiles a{
+  display:block;
+}
+

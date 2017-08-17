@@ -41,7 +41,7 @@ var UserSchema = new mongoose.Schema({
         },
 
         editProfile: function (user, callback) {
-            User.update(user._id, {
+            User.update({_id:user._id}, {
               $set: {
                 bio: user.bio,
                 homeTown: user.homeTown

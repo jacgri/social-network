@@ -1,6 +1,10 @@
 
 {{#if currentUser}}
-  Hello {{currentUser.emailAddress}}! <a href="/logout">Logout</a> or <a href="/editprofile">Edit Profile</a> or <a href="/profiles">View Profiles</a>
+  Hello {{currentUser.emailAddress}}! 
+  <ul>
+  <li><a href="/logout">Logout</a></li>
+  <li><a href="/editprofile">Edit Profile</a></li>
+  <li><a href="/profiles">View Profiles</a></li>
 
 {{else}}
   <ul>
