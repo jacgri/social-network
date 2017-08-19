@@ -53,14 +53,24 @@ button{
   background-color: #3D314A;
   color: #F7FFF7;
   border: none;
-  padding:8px;
+  padding:14px 25px;
+  margin: 5px;
 }
 
 .profiles {
   float: left;
+  margin: 5px;
 }
 
-.profiles a{
-  display:block;
+.homeButton a:link, .homeButton a:visited, .homeButton a:hover, .homeButton a:active{
+  Background-color: #3D314A;
+  color: #F7FFF7;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
 }
+
+
 
